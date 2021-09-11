@@ -2,12 +2,12 @@
 
 pragma solidity ^0.8.0;
 
-import "hardhat/console.sol";
+//import "hardhat/console.sol";
 //wraps erc-721 contract
 import "@openzeppelin/contracts/token/ERC721/extensions/ERC721Enumerable.sol";
 import "@openzeppelin/contracts/access/Ownable.sol";
 
-contract SmartContract is ERC721Enumerable, Ownable {
+contract OtherHomes is ERC721Enumerable, Ownable {
   using Strings for uint256;
 
   string public baseURI;
