@@ -14,7 +14,7 @@ contract SmartContract is ERC721Enumerable, Ownable {
   //for safe measure .json
   string public baseExtension = ".json";
   uint256 public cost = 0.02 ether;
-  uint256 public maxSupply = 10000;
+  uint256 public maxSupply = 25;
   uint256 public maxMintAmount = 20;
   //ability to pause if something goes wrong
   bool public paused = false;
@@ -22,7 +22,7 @@ contract SmartContract is ERC721Enumerable, Ownable {
   constructor(string memory _initBaseURI) ERC721("Other Homes Test", "OHT") {
     setBaseURI(_initBaseURI);
     //mints # to team/ contract owner also for drops etc.
-    mint(msg.sender, 20);
+    mint(msg.sender, 5);
   }
 
   // internal
@@ -49,7 +49,7 @@ contract SmartContract is ERC721Enumerable, Ownable {
 
     //initilize at 1
     for (uint256 i = 1; i <= _mintAmount; i++) {
-        //underlying minding funciton pass to who mints
+        //underlying minting funciton pass to who mints
         //also where mint goes to what address running a loop
       _safeMint(_to, supply + i);
     }
