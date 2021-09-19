@@ -4,8 +4,9 @@
 // When running the script with `npx hardhat run <script>` you'll find the Hardhat
 // Runtime Environment's members available in the global scope.
 const hre = require("hardhat");
-const initBaseUri =
-  "https://ipfs.io/ipfs/QmPoMHJTLAxfJjYEssMiMPb36JYw7gTsE9syCu14j9ZatB/";
+//should leave out ipfs.io and only have ipfs://cid/ (dont forget ending /)
+const _initBaseUri =
+  "https://ipfs.io/ipfs/QmZtBRQ7DN6NPRvGJAx3QES4UaJQdifyRr3ik6x8aCCN9k/";
 
 async function main() {
   // Hardhat always runs the compile task when running scripts with its command
@@ -17,7 +18,7 @@ async function main() {
 
   // We get the contract to deploy
   const OtherHomes = await hre.ethers.getContractFactory("OtherHomes");
-  const otherHomes = await OtherHomes.deploy(initBaseUri);
+  const otherHomes = await OtherHomes.deploy(_initBaseUri);
 
   await otherHomes.deployed();
 

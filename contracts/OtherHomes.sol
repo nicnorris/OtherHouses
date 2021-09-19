@@ -31,20 +31,20 @@ contract OtherHomes is ERC721Enumerable, Ownable {
   }
 
   // public
-  //takes in 2 perameters 
+  //takes in 2 perameters might not need _to
   function mint(address _to, uint256 _mintAmount) public payable {
       //extract from total supply
     uint256 supply = totalSupply();
     //make sure not paused
-    require(!paused);
+    require(!paused, "sale not active");
     require(_mintAmount > 0);
-    require(_mintAmount <= maxMintAmount);
+    require(_mintAmount <= maxMintAmount, "exceeds max tokens per tx");
     //checks if enough left
-    require(supply + _mintAmount <= maxSupply);
+    require(supply + _mintAmount <= maxSupply, "exceeds tokens left");
 
     // if not owner we charge a fee
     if (msg.sender != owner()) {
-      require(msg.value >= cost * _mintAmount);
+      require(msg.value >= cost * _mintAmount, "not enough ether to claim");
     }
 
     //initilize at 1
